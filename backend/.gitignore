@@ -1,0 +1,25 @@
+# dependencias
+/node_modules
+
+# archivos de compilación
+/dist
+/build
+
+# archivos de entorno
+.env
+.env.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.log
+
+# archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# bases de datos
+*.db
+*.sqlite
+/database.ts # Si tu archivo de configuración de base de datos contiene credenciales, lo ignoramos para no subirlo al repositorio
