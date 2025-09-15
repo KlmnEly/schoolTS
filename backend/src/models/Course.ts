@@ -25,6 +25,7 @@ Course.init(
     name: {
       type: DataTypes.STRING(100),
       allowNull: false,
+      unique: true,
     },
     description: {
       type: DataTypes.STRING(255),
@@ -37,8 +38,12 @@ Course.init(
   },
   {
     sequelize,
+    modelName: 'Course',
     tableName: 'courses',
-    timestamps: false, 
+    timestamps: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+
   }
 );
 
