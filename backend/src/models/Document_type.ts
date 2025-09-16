@@ -1,19 +1,19 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/database';
 
-export interface Document_typeAttributes {
+export interface DocumentTypeAttributes {
     id_document_type?: number;
     name: string;
     status: boolean;
 }
 
-class Document_type extends Model<Document_typeAttributes> implements Document_typeAttributes {
+class DocumentType extends Model<DocumentTypeAttributes> implements DocumentTypeAttributes {
     public id_document_type!: number;
     public name!: string;
     public status!: boolean;
 }
 
-Document_type.init(
+DocumentType.init(
     {
         id_document_type: {
             type: DataTypes.INTEGER,
@@ -32,7 +32,7 @@ Document_type.init(
     },
     {
         sequelize,
-        modelName: 'Document_type',
+        modelName: 'DocumentType',
         tableName: 'document_types',
         timestamps: true,
         createdAt: "created_at",
@@ -40,4 +40,4 @@ Document_type.init(
     }
 );
 
-export default Document_type;
+export default DocumentType;
