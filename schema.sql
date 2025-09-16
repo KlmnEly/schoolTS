@@ -21,7 +21,7 @@ create table if not exists roles (
 
 create table if not exists document_types (
 	id_document_type serial primary key,
-	name varchar(100) not null,
+	name varchar(100) not null unique,
 	status boolean default TRUE,
 	created_at timestamp default current_timestamp,
 	updated_at timestamp default current_timestamp
@@ -29,7 +29,7 @@ create table if not exists document_types (
 
 create table if not exists courses (
 	id_course serial primary key,
-	name varchar(100) not null,
+	name varchar(100) not null unique,
 	description varchar(255),
 	status boolean default TRUE,
 	created_at timestamp default current_timestamp,
@@ -56,7 +56,7 @@ create table if not exists subjects (
 
 create table if not exists users (
 	id_user serial primary key,
-	role_id int references roles(id_role),
+	role_id int not null references roles(id_role),
 	username varchar(50) not null unique,
 	password varchar(255) not null,
 	status boolean default TRUE,
@@ -66,10 +66,9 @@ create table if not exists users (
 
 create table if not exists students (
 	id_student serial primary key,
-	full_name varchar(150) not null,
 	document_type_id int not null references document_types(id_document_type),
+	full_name varchar(150) not null,
 	document_number varchar (20) not null unique,
-	profession_id int not null,
 	birth_date date not null,
 	status boolean default true
 );
