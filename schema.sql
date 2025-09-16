@@ -70,7 +70,9 @@ create table if not exists students (
 	full_name varchar(150) not null,
 	document_number varchar (20) not null unique,
 	birth_date date not null,
-	status boolean default true
+	status boolean default true,
+	created_at timestamp default current_timestamp,
+	updated_at timestamp default current_timestamp
 );
 
 create table if not exists teachers (
@@ -98,7 +100,9 @@ create table if not exists teacher_course (
 	id_teacher_course serial primary key,
 	teacher_id int references teachers(id_teacher),
 	course_id int references courses(id_course),
-	status boolean default true
+	status boolean default true,
+	created_at timestamp default current_timestamp,
+	updated_at timestamp default current_timestamp
 );
 
 create table if not exists schedules (
