@@ -77,10 +77,18 @@ create table if not exists teachers (
 	id_teacher serial primary key,
 	user_id int references users(id_user),
 	document_type_id int references document_types(id_document_type),
-	profession_id int references professions(id_profession),
 	full_name varchar(150) not null,
 	document_number varchar (20) not null unique,
 	birth_date date not null,
+	status boolean default true,
+	created_at timestamp default current_timestamp,
+	updated_at timestamp default current_timestamp
+);
+
+create table if not exists teacher_profession (
+	id_teacher_profession serial primary key,
+	teacher_id int references teachers(id_teacher),
+	profession_id int references professions(id_profession),
 	status boolean default true,
 	created_at timestamp default current_timestamp,
 	updated_at timestamp default current_timestamp
