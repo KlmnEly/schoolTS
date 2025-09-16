@@ -11,6 +11,8 @@ DROP TABLE IF EXISTS document_types;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
 
+create type if not exists day_week as enum ('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo');
+
 create table if not exists roles (
 	id_role serial primary key,
 	name varchar(50) not null unique,
@@ -109,7 +111,7 @@ create table if not exists schedules (
 	id_schedule serial primary key,
 	teacher_course_id int not null references teacher_course(id_teacher_course),
 	subject_id int references subjects(id_subject),
-	day date not null,
+	day day_week not null,
 	hour_start time not null,
 	hour_end time not null,
 	status boolean default TRUE,
