@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS grades;
 DROP TABLE IF EXISTS student_schedule;
 DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS teacher_course;
+DROP TABLE IF EXISTS teacher_profession;
 DROP TABLE IF EXISTS teachers;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS subjects;
@@ -10,8 +11,9 @@ DROP TABLE IF EXISTS professions;
 DROP TABLE IF EXISTS document_types;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
+DROP TYPE IF EXISTS day_week;
 
-create type if not exists day_week as enum ('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo');
+create type day_week as enum ('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo');
 
 create table if not exists roles (
 	id_role serial primary key,
