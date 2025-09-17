@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+import { initializeModels } from '../models/init-models';
 
 dotenv.config();
 
@@ -13,13 +14,19 @@ const sequelize = new Sequelize(
   }
 );
 
-async function connectDB() {
-  try {
-    await sequelize.authenticate();
-    console.log('Conexión a la base de datos establecida correctamente.');
-  } catch (error) {
-    console.error('No se pudo conectar a la base de datos:', error);
-  }
-}
+initializeModels(sequelize);
 
-export { sequelize, connectDB };
+export const connectDB = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Database connection has been established successfully.');
+        
+        await sequelize.sync({ force: false });
+        console.log('Database tables synchronized.');
+        
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+};
+
+export { sequelize };

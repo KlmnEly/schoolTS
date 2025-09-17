@@ -15,42 +15,4 @@ class StudentSchedule extends Model<StudentScheduleAttributes> implements Studen
     public status!: boolean;
 }
 
-StudentSchedule.init(
-    {
-        id_student_schedule: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        student_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: 'students',
-                key: 'id_student'
-            }
-        },
-        schedule_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'schedules',
-                key: 'id_schedule'
-            }
-        },
-        status: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
-        },
-    },
-    {
-        sequelize,
-        modelName: 'StudentSchedule',
-        tableName: 'student_schedule',
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at"
-    }
-);
-
 export default StudentSchedule;

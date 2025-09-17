@@ -15,35 +15,4 @@ class Profession extends Model<ProfessionAttributes> implements ProfessionAttrib
     public status!: boolean;
 }
 
-Profession.init(
-    {
-        id_profession: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        name: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-            unique: true,
-        },
-        description: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-        },
-        status: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
-        },
-    },
-    {
-        sequelize,
-        modelName: 'Profession',
-        tableName: 'professions',
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at"
-    }
-);
-
 export default Profession;

@@ -15,42 +15,4 @@ class TeacherCourse extends Model<TeacherCourseAttributes> implements TeacherCou
     public status!: boolean;
 }
 
-TeacherCourse.init(
-    {
-        id_teacher_course: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        teacher_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: 'teachers',
-                key: 'id_teacher'
-            }
-        },
-        course_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'courses',
-                key: 'id_course'
-            }
-        },
-        status: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
-        },
-    },
-    {
-        sequelize,
-        modelName: 'TeacherCourse',
-        tableName: 'teacher_course',
-        timestamps: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at"
-    }
-);
-
 export default TeacherCourse;
